@@ -10,6 +10,11 @@ This is a simple web-based quiz application designed to help beginners learn the
 - **Responsive Design**: Works well on both desktop and mobile devices.
 - **Tailwind CSS**: Styled using Tailwind CSS for a modern and clean UI.
 
+## Access the Quiz
+
+To access the web quiz, visit this link:  
+[Git Quiz for Beginners](https://imandaidf.github.io/Git-Quiz/)
+
 ## Technologies Used
 
 - **HTML**: Structure of the application.
@@ -18,7 +23,7 @@ This is a simple web-based quiz application designed to help beginners learn the
 
 ## How to Use
 
-1. Open the `index.html` file in any modern web browser.
+1. Open the `index.html` file in any modern web browser or visit the link above.
 2. The quiz will start with the first question.
 3. Select an answer and click the "Next Question" button to proceed.
 4. At the end of the quiz, your score will be displayed along with feedback.
