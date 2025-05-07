@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Quiz for Beginners</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 0.75rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+        }
+        .card-header {
+            padding: 1.25rem 1.5rem; /* px-6 py-5 */
+        }
+        .card-title {
+            font-size: 1.875rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            color: white;
+            text-align: center;
+        }
+        .card-content {
+            padding: 1.25rem 1.5rem; /* px-6 py-5 */
+        }
+        .text-gray-300 {
+            color: #d1d5db;
+        }
+        .mb-6 {
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .space-y-4 > * + * {
+            margin-top: 1rem; /* space-y-4 */
+        }
+        .flex {
+            display: flex;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .space-x-2 > * + * {
+            margin-left: 0.5rem; /* space-x-2 */
+        }
+        .radio-group-item {
+            border-width: 1px; /* border */
+            border-color: #374151; /* border-gray-700 */
+            background-color: rgba(55, 65, 81, 0.5); /* bg-gray-800/50 */
+            color: white;
+            /* focus:ring-2 focus:ring-blue-500 - these styles are handled by the container in this implementation */
+            width: 1.25rem; /* w-5 */
+            height: 1.25rem; /* h-5 */
+            border-radius: 9999px; /* rounded-full */
+            appearance: none; /* Hide default radio appearance */
+            cursor: pointer;
+        }
+
+        .radio-group-item:checked {
+            background-color: #3b82f6; /* bg-blue-500 */
+            border-color: #3b82f6;
+        }
+
+        .radio-group-item:focus {
+             box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:ring-blue-500 with opacity*/
+             outline: none; /* removes the default outline */
+        }
+
+        .label {
+            color: #d1d5db; /* text-gray-300 */
+            cursor: pointer;
+            -webkit-user-select: none;  /* Safari */
+            -ms-user-select: none;    /* IE/Edge */
+            user-select: none;          /* Standard syntax */
+        }
+        .font-semibold {
+            font-weight: 600;
+        }
+        .text-green-400 {
+            color: #6ee7b7;
+        }
+        .text-red-400 {
+            color: #f87171;
+        }
+        .mt-4 {
+            margin-top: 1rem; /* mt-4 */
+        }
+        .text-sm {
+            font-size: 0.875rem; /* text-sm */
+        }
+        .italic {
+            font-style: italic;
+        }
+        .text-red-400 {
+            color: #f87171; /* text-red-400 */
+        }
+        .text-green-400 {
+            color: #6ee7b7; /* text-green-400 */
+        }
+        .mt-6 {
+            margin-top: 1.5rem; /* mt-6 */
+        }
+        .w-full {
+            width: 100%;
+        }
+        .bg-blue-500\/90 {
+            background-color: rgba(59, 130, 246, 0.9); /* bg-blue-500/90 */
+        }
+        .hover\:bg-blue-500:hover {
+            background-color: #3b82f6; /* hover:bg-blue-500 */
+        }
+        .text-white {
+            color: white;
+        }
+        .px-6 {
+            padding-left: 1.5rem; /* px-6 */
+            padding-right: 1.5rem; /* px-6 */
+        }
+        .py-2 {
+            padding-top: 0.5rem; /* py-2 */
+            padding-bottom: 0.5rem; /* py-2 */
+        }
+        .rounded-full {
+            border-radius: 9999px; /* rounded-full */
+        }
+        .transition-colors {
+            transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+            transition-duration: 0.3s;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .shadow-lg {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05); /* shadow-lg */
+        }
+        .hover\:shadow-xl:hover {
+             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+        }
+        .opacity-50 {
+            opacity: 0.5;
+        }
+        .cursor-not-allowed {
+            cursor: not-allowed;
+        }
+        .text-2xl {
+            font-size: 1.5rem; /* text-2xl */
+            line-height: 2rem;
+        }
+        .font-semibold {
+            font-weight: 600;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+         .bg-green-500\/20 {
+            background-color: rgba(52, 211, 153, 0.2); /* bg-green-500/20 */
+        }
+        .text-green-400 {
+            color: #6ee7b7; /* text-green-400 */
+        }
+        .border-green-500\/30 {
+            border-color: rgba(52, 211, 153, 0.3); /* border-green-500/30 */
+        }
+        .bg-yellow-500\/20 {
+            background-color: rgba(252, 211, 77, 0.2); /* bg-yellow-500/20 */
+        }
+        .text-yellow-400 {
+            color: #fef08a; /* text-yellow-400 */
+        }
+        .border-yellow-500\/30 {
+            border-color: rgba(252, 211, 77, 0.3); /* border-yellow-500/30 */
+        }
+        .bg-red-500\/20 {
+            background-color: rgba(248, 113, 113, 0.2); /* bg-red-500/20 */
+        }
+        .text-red-400 {
+            color: #f87171; /* text-red-400 */
+        }
+        .border-red-500\/30 {
+            border-color: rgba(248, 113, 113, 0.3); /* border-red-500/30 */
+        }
+
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white flex items-center justify-center p-4">
+    <div class="max-w-3xl w-full">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-green-400 text-transparent bg-clip-text">
+            Git Quiz for Beginners
+        </h1>
+
+        <div id="quiz-content">
+        </div>
+    </div>
+
+    <script>
+        const quizQuestions = [
+            {
+                id: 1,
+                text: 'What is Git?',
+                options: [
+                    'A type of coffee',
+                    'A version control system',
+                    'A graphic design tool',
+                    'A database management system',
+                ],
+                correctAnswer: 'A version control system',
+            },
+            {
+                id: 2,
+                text: 'Which command is used to create a new Git repository?',
+                options: ['git init', 'git create', 'git new', 'git start'],
+                correctAnswer: 'git init',
+            },
+            {
+                id: 3,
+                text: 'What does "commit" mean in Git?',
+                options: [
+                    'To delete a file',
+                    'To save changes to the repository',
+                    'To create a new branch',
+                    'To merge two branches',
+                ],
+                correctAnswer: 'To save changes to the repository',
+            },
+            {
+                id: 4,
+                text: 'Which command is used to add files to the staging area?',
+                options: ['git add', 'git stage', 'git include', 'git attach'],
+                correctAnswer: 'git add',
+            },
+            {
+                id: 5,
+                text: 'What is a "branch" in Git?',
+                options: [
+                    'A type of Git server',
+                    'An independent line of development',
+                    'A way to organize files',
+                    'A tool for visualizing commits',
+                ],
+                correctAnswer: 'An independent line of development',
+            },
+            {
+                id: 6,
+                text: 'Which command is used to switch between branches?',
+                options: ['git switch', 'git change', 'git checkout', 'git branch'],
+                correctAnswer: 'git checkout',
+            },
+            {
+                id: 7,
+                text: 'What is the purpose of the "git merge" command?',
+                options: [
+                    'To delete a branch',
+                    'To combine changes from one branch into another',
+                    'To rename a branch',
+                    'To compare two branches',
+                ],
+                correctAnswer: 'To combine changes from one branch into another',
+            },
+            {
+                id: 8,
+                text: 'Which command is used to see the history of commits?',
+                options: ['git log', 'git history', 'git show', 'git commits'],
+                correctAnswer: 'git log',
+            },
+            {
+                id: 9,
+                text: 'What is a "remote" repository?',
+                options: [
+                    'A repository on your local machine',
+                    'A repository hosted on a server (e.g., GitHub)',
+                    'A backup of your repository',
+                    'A temporary storage area',
+                ],
+                correctAnswer: 'A repository hosted on a server (e.g., GitHub)',
+            },
+            {
+                id: 10,
+                text: 'Which command is used to upload local changes to a remote repository?',
+                options: ['git push', 'git upload', 'git send', 'git sync'],
+                correctAnswer: 'git push',
+            },
+        ];
+
+        const quizContent = document.getElementById('quiz-content');
+        let currentQuestion = 0;
+        let selectedAnswer = null;
+        let score = 0;
+        let quizCompleted = false;
+        let isAnswerSelected = false;
+
+        function renderQuestion() {
+            const currentQ = quizQuestions[currentQuestion];
+            quizContent.innerHTML = `
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Question ${currentQuestion + 1} / ${quizQuestions.length}</h2>
+                    </div>
+                    <div class="card-content">
+                        <p class="text-lg mb-6 text-gray-300">${currentQ.text}</p>
+                        <div class="space-y-4">
+                            ${currentQ.options.map(option => `
+                                <div class="flex items-center space-x-2">
+                                    <input
+                                        type="radio"
+                                        id="question-${currentQ.id}-${option}"
+                                        name="question-${currentQ.id}"
+                                        value="${option}"
+                                        class="radio-group-item"
+                                        ${selectedAnswer === option ? 'checked' : ''}
+                                        onclick="handleAnswerSelection('${option}')"
+                                     >
+                                    <label for="question-${currentQ.id}-${option}" class="${selectedAnswer === option ? (selectedAnswer === currentQ.correctAnswer ? 'text-green-400 font-semibold' : 'text-red-400 font-semibold') : ''} label">
+                                        ${option}
+                                    </label>
+                                </div>
+                            `).join('')}
+                        </div>
+                        ${!isAnswerSelected ? `<p class="mt-4 text-gray-400 text-sm italic">Select an answer to continue.</p>` : ''}
+                        ${isAnswerSelected && selectedAnswer !== currentQ.correctAnswer ? `
+                            <p class="mt-4 text-red-400 text-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle inline-block mr-1 h-4 w-4"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                                Incorrect! The correct answer is "${currentQ.correctAnswer}".
+                            </p>
+                        ` : ''}
+                        ${isAnswerSelected && selectedAnswer === currentQ.correctAnswer ? `
+                            <p class="mt-4 text-green-400 text-sm">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle inline-block mr-1 h-4 w-4"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                                Correct!
+                            </p>
+                        ` : ''}
+                        <button
+                            class="${isAnswerSelected ? 'mt-6 w-full bg-blue-500/90 hover:bg-blue-500 text-white px-6 py-2 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl' : 'mt-6 w-full bg-blue-500/90 text-white px-6 py-2 rounded-full transition-colors duration-300 opacity-50 cursor-not-allowed'}"
+                            onclick="handleNextQuestion()"
+                            ${!isAnswerSelected ? 'disabled' : ''}
+                        >
+                            ${currentQuestion === quizQuestions.length - 1 ? 'Finish Quiz' : 'Next Question'}
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderQuizCompleted() {
+            quizContent.innerHTML = `
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title text-2xl font-semibold text-center text-white">Quiz Completed!</h2>
+                    </div>
+                    <div class="card-content text-center">
+                        <p class="text-lg mb-4">
+                            Your Score: ${score} / ${quizQuestions.length}
+                        </p>
+                        ${score === quizQuestions.length ? `
+                            <div class="bg-green-500/20 text-green-400 border-green-500/30 mb-4 p-4 rounded-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle h-4 w-4 inline-block mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                                <h3 class="font-semibold text-lg">Perfect Score!</h3>
+                                <p>Congratulations! You aced the quiz.</p>
+                            </div>
+                        ` : score >= quizQuestions.length * 0.8 ? `
+                            <div class="bg-green-500/20 text-green-400 border-green-500/30 mb-4 p-4 rounded-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle h-4 w-4 inline-block mr-2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+                                <h3 class="font-semibold text-lg">Great Job!</h3>
+                                <p>You did very well!</p>
+                            </div>
+                        ` : score >= quizQuestions.length * 0.6 ? `
+                            <div class="bg-yellow-500/20 text-yellow-400 border-yellow-500/30 mb-4 p-4 rounded-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle h-4 w-4 inline-block mr-2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 0 0 0 4 21h16a2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                                <h3 class="font-semibold text-lg">Good Effort!</h3>
+                                <p>You passed, but there's room for improvement.</p>
+                            </div>
+                        ` : `
+                            <div class="bg-red-500/20 text-red-400 border-red-500/30 mb-4 p-4 rounded-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle h-4 w-4 inline-block mr-2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 0 0 0 4 21h16a2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                                <h3 class="font-semibold text-lg">Keep Learning!</h3>
+                                <p>You can do better. Review Git basics and try again.</p>
+                            </div>
+                        `}
+                        <button
+                            class="bg-blue-500/90 hover:bg-blue-500 text-white px-6 py-2 rounded-full transition-colors duration-300 shadow-lg hover:shadow-xl"
+                            onclick="handleResetQuiz()"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-cw mr-2 h-4 w-4"><path d="M21.43 15.34a9 9 0 1 0-8.71-8.71"/><path d="M15 3h6v6"/><path d="M3 9h6V3"/></svg>
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleAnswerSelection(answer) {
+            selectedAnswer = answer;
+            isAnswerSelected = true;
+            renderQuestion(); // Re-render to update the display (e.g., show correct/incorrect message)
+        }
+
+        function handleNextQuestion() {
+            if (!isAnswerSelected) return;
+
+            if (selectedAnswer === quizQuestions[currentQuestion].correctAnswer) {
+                score++;
+            }
+
+            selectedAnswer = null;
+            isAnswerSelected = false;
+
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                quizCompleted = true;
+                renderQuizCompleted();
+            }
+        }
+
+        function handleResetQuiz() {
+            currentQuestion = 0;
+            selectedAnswer = null;
+            score = 0;
+            quizCompleted = false;
+            isAnswerSelected = false;
+            renderQuestion();
+        }
+
+        renderQuestion(); // Initial render
+    </script>
+</body>
+</html>
